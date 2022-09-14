@@ -43,6 +43,7 @@ Main();
 
 void Main()
 {
+    // Initiate list of assets
     List<Product> Assets = new List<Product>();
 
     Console.ForegroundColor = ConsoleColor.DarkBlue;
@@ -53,6 +54,7 @@ void Main()
 
     while (true)
     {
+        // Initiating variables
         string type = "";
         string brand = "";
         string model = "";
@@ -61,7 +63,6 @@ void Main()
         int USD = 0;
         string currency = "";
         double localPriceToday = 0;
-
         double EUR = 0.99;
         double SEK = 10.46;
 
@@ -73,7 +74,7 @@ void Main()
             Console.WriteLine("1. Phone");
             Console.WriteLine("2. Computer");
             Console.WriteLine();
-            Exit();
+            Exit(); // Method to print exit instructions
 
             string input = Console.ReadLine();
 
@@ -102,7 +103,7 @@ void Main()
             {
                 Console.WriteLine("Enter the number corresponding to the brand of the phone you would like to add.");
                 Console.WriteLine("Or press enter to write the name manually");
-                Exit();
+                Exit(); // Method to print exit instructions
 
                 string input = Console.ReadLine();
 
@@ -145,7 +146,7 @@ void Main()
             else if (type == "Computer")
             {
                 Console.WriteLine("Enter the number corresponding to the brand of the computer you would like to add. Or press enter to write the name manually");
-                Exit();
+                Exit(); // Method to print exit instructions
                 string input = Console.ReadLine();
 
                 // Set brand from options or manually
@@ -196,7 +197,7 @@ void Main()
         if (model.Trim() == "")
         {
             Console.WriteLine("Enter the " + brand + "'s model:");
-            Exit();
+            Exit(); // Method to print exit instructions
 
             string input = Console.ReadLine();
 
@@ -225,7 +226,7 @@ void Main()
         if (office == "")
         {
             Console.WriteLine("Enter the number corresponding to the office the asset belongs to:");
-            Exit();
+            Exit(); // Method to print exit instructions
             string input = Console.ReadLine();
 
             // Set office and currency from user input
@@ -268,7 +269,7 @@ void Main()
             while (year == 0)
             {
                 Console.WriteLine("Enter the year the asset was purchased:"); ;
-                Exit();
+                Exit(); // Method to print exit instructions
                 string input = Console.ReadLine();
 
                 // Exit functionallity
@@ -298,7 +299,7 @@ void Main()
             while (month == 0)
             {
                 Console.WriteLine("Enter the month the asset was purchased:");
-                Exit();
+                Exit(); // Method to print exit instructions
 
                 string input = Console.ReadLine();
 
@@ -329,7 +330,7 @@ void Main()
             while (day == 0)
             {
                 Console.WriteLine("Enter the day the asset was purchased:");
-                Exit();
+                Exit(); // Method to print exit instructions
                 string input = Console.ReadLine();
 
                 // Exit functionallity
@@ -374,7 +375,7 @@ void Main()
         if (USD == 0)
         {
             Console.WriteLine("Enter the assets purchase price in USD:");
-            Exit();
+            Exit(); // Method to print exit instructions
 
             string input = Console.ReadLine();
 
