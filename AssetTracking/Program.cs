@@ -289,7 +289,7 @@ void Main(List<Product> Assets)
                 {
                     Console.WriteLine("Enter the day the asset was purchased:"); ;
                     input = Console.ReadLine();
-                    if (input.ToLower().Trim() == "exit")
+                    if (input.ToLower().Trim() == "exit" || input.ToLower().Trim() == "e")
                     {
                         break;
                     }
@@ -327,31 +327,45 @@ void Main(List<Product> Assets)
             // Check if price in USD is set
             if (USD == 0)
             {
+                Console.WriteLine("Enter the assets purchase price in USD:");
+                input = Console.ReadLine();
 
+                if (input.ToLower().Trim() == "exit" || input.ToLower().Trim() == "e")
+                {
+                    break;
+                }
+                else if (int.TryParse(input.Trim(), out USD)) { }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Wrong input, price must be written with numbers");
+                    Console.ResetColor();
+                }
             }
-        }
+            if (localPriceToday == 0)
+            {
+                // Set local price from currency
+                if (currency == "USD")
+                {
+                    localPriceToday = USD;
+                }
+                else if (currency == "EUR")
+                {
+                    localPriceToday = USD * EUR;
+                }
+                else if (currency == "SEK")
+                {
+                    localPriceToday = USD * SEK;
+                }
+            }
 
-
-        // Set local price from currency
-        if (currency == "USD")
-        {
-            localPriceToday = USD;
-        }
-        else if (currency == "EUR")
-        {
-            localPriceToday = USD * EUR;
-        }
-        else if (currency == "SEK")
-        {
-            localPriceToday = USD * SEK;
-        }
-
-        // Create asset if all values are set
-        if (type != "" && brand != "" && office != "" && purchaseDate != null && USD != 0 && currency != "")
-        {
-            Product product = new Product(type, brand, model, office, purchaseDate, USD, currency, localPriceToday);
-            Assets.Add(product);
-        }
+            // Create asset if all values are set
+            if (type != "" && brand != "" && office != "" && purchaseDate != null && USD != 0 && currency != "")
+            {
+                Product product = new Product(type, brand, model, office, purchaseDate, USD, currency, localPriceToday);
+                Assets.Add(product);
+            }
+        }        
     }
 }
 
