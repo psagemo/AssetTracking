@@ -101,8 +101,11 @@ void Main()
             // Add new phone
             if (type == "Phone")
             {
-                Console.WriteLine("Enter the number corresponding to the brand of the phone you would like to add.");
-                Console.WriteLine("Or press enter to write the name manually");
+                Console.WriteLine("Enter the number corresponding to the brand of the phone you would like to add. Or press enter to write the name manually");
+                Console.WriteLine("1. iPhone");
+                Console.WriteLine("2. Motorola");
+                Console.WriteLine("3. Samsung");
+                Console.WriteLine("4. Nokia");
                 Exit(); // Method to print exit instructions
 
                 string input = Console.ReadLine();
@@ -146,6 +149,10 @@ void Main()
             else if (type == "Computer")
             {
                 Console.WriteLine("Enter the number corresponding to the brand of the computer you would like to add. Or press enter to write the name manually");
+                Console.WriteLine("1. MacBook");
+                Console.WriteLine("2. Asus");
+                Console.WriteLine("3. Lenovo");
+                Console.WriteLine("4. HP");
                 Exit(); // Method to print exit instructions
                 string input = Console.ReadLine();
 
@@ -226,6 +233,9 @@ void Main()
         if (office == "")
         {
             Console.WriteLine("Enter the number corresponding to the office the asset belongs to:");
+            Console.WriteLine("1. USA");
+            Console.WriteLine("2. Spain");
+            Console.WriteLine("3. Swedem");
             Exit(); // Method to print exit instructions
             string input = Console.ReadLine();
 
