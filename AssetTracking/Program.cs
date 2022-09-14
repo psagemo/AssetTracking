@@ -57,98 +57,110 @@ void Main(List<Product> Assets)
         double SEK = 10.46;
         
 
-            string? input = Console.ReadLine();
+        string? input = Console.ReadLine();
 
      
-        if (input?.ToLower().Trim() == "exit" || input?.ToLower().Trim() == "e")
+        if (input.ToLower().Trim() == "exit" || input?.ToLower().Trim() == "e")
         {
             break;
         }
         else
         {
-            Console.WriteLine("Select what type of asset you would like to add:");
-            Console.WriteLine("1. Phone");
-            Console.WriteLine("2. Computer");
-            input = Console.ReadLine();
+            if (type == "")
+            {
+                Console.WriteLine("Select what type of asset you would like to add:");
+                Console.WriteLine("1. Phone");
+                Console.WriteLine("2. Computer");
 
-            if (input == null)
-            {
-                // write error message to console
-                break;
-            }
-
-            if (input.ToLower().Trim() == "exit" || input.ToLower().Trim() == "e")
-            {
-                break;
-            }
-            else if (input.ToLower().Trim() == "phone" || input.ToLower().Trim() == "p" || input.ToLower().Trim() == "1")
-            {
-                type = "Phone";
-            }
-            else if (input.ToLower().Trim() == "computer" || input.ToLower().Trim() == "c" || input.ToLower().Trim() == "2")
-            {
-                type = "Computer";
-            }
-
-            if (type == "Phone")
-            {
-                Console.WriteLine("Enter the number corresponding to the brand of the phone you would like to add.");
-                Console.WriteLine("Or press enter to write the name manually");
                 input = Console.ReadLine();
 
-                switch (input?.ToLower().Trim())
+                if (input.ToLower().Trim() == "exit" || input.ToLower().Trim() == "e")
                 {
-                    case "e":
-                    case "exit":
-                        break;
-                    case "1":
-                        brand = "iPhone";
-                        break;
-                    case "2":
-                        brand = "Motorola";
-                        break;
-                    case "3":
-                        brand = "Samsung";
-                        break;
-                    case "4":
-                        brand = "Nokia";
-                        break;
-                    default:
-                        Console.WriteLine("Please enter the name of the brand:");
-                        brand = Console.ReadLine();
-                        break;
+                    break;
                 }
+                else if (input.ToLower().Trim() == "phone" || input.ToLower().Trim() == "p" || input.ToLower().Trim() == "1")
+                {
+                    type = "Phone";
+                }
+                else if (input.ToLower().Trim() == "computer" || input.ToLower().Trim() == "c" || input.ToLower().Trim() == "2")
+                {
+                    type = "Computer";
+                }                
+            }            
+            else if (type == "Phone")
+            {
+                if (brand == "")
+                {
+                    Console.WriteLine("Enter the number corresponding to the brand of the phone you would like to add.");
+                    Console.WriteLine("Or press enter to write the name manually");
+                    input = Console.ReadLine();
+
+                    switch (input.ToLower().Trim())
+                    {
+                        case "e":
+                        case "exit":
+                            break;
+                        case "1":
+                            brand = "iPhone";
+                            break;
+                        case "2":
+                            brand = "Motorola";
+                            break;
+                        case "3":
+                            brand = "Samsung";
+                            break;
+                        case "4":
+                            brand = "Nokia";
+                            break;
+                        default:
+                            Console.WriteLine("Please enter the name of the brand:");
+                            brand = Console.ReadLine();
+                            break;
+                    }
+                }
+                if (model == "")
+                {
+                    Console.WriteLine();
+                }
+                
             }
             else if (type == "Computer")
             {
-                Console.WriteLine("Enter the number corresponding to the brand of the computer you would like to add. Or press enter to write the name manually");
-                input = Console.ReadLine();
-
-                switch (input.ToLower().Trim())
+                if (brand == "")
                 {
-                    case "e":
-                        break;
-                    case "exit":
-                        break;
-                    case "1":
-                        brand = "MacBook";
-                        break;
-                    case "2":
-                        brand = "Asus";
-                        break;
-                    case "3":
-                        brand = "Lenovo";
-                        break;
-                    case "4":
-                        brand = "HP";
-                        break;
-                    default:
-                        Console.WriteLine("Please enter the name of the brand:");
-                        brand = Console.ReadLine();
-                        break;
+                    Console.WriteLine("Enter the number corresponding to the brand of the computer you would like to add. Or press enter to write the name manually");
+                    input = Console.ReadLine();
+
+                    switch (input.ToLower().Trim())
+                    {
+                        case "e":
+                        case "exit":
+                            break;
+                        case "1":
+                            brand = "MacBook";
+                            break;
+                        case "2":
+                            brand = "Asus";
+                            break;
+                        case "3":
+                            brand = "Lenovo";
+                            break;
+                        case "4":
+                            brand = "HP";
+                            break;
+                        default:
+                            Console.WriteLine("Please enter the name of the brand:");
+                            brand = Console.ReadLine();
+                            break;
+                    }
+                }
+                if (model == "")
+                {
+
                 }
             }
-        }
+        }            
+        
 
         // Set local price from currency
         if (currency == "USD")
@@ -168,7 +180,26 @@ void Main(List<Product> Assets)
         if (type != "" && brand != "" && office != "" && purchaseDate != null && USD != 0 && currency != "")
         {
             Product product = new Product(type, brand, model, office, purchaseDate, USD, currency, localPriceToday);
+            Assets.Add(product);
         }
     }
 }
+
+//string Input()
+//{
+//    string? input = Console.ReadLine();
+
+//    if (input?.ToLower().Trim() == "exit" || input?.ToLower().Trim() == "e")
+//    {
+//        return "exit";
+//    }
+//    else if (input == null)
+//    {
+//        return "";
+//    }
+//    else
+//    {
+//        return input;
+//    }
+//}
 
