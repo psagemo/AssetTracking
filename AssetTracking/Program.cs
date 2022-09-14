@@ -46,11 +46,13 @@ void Main()
     // Initiate list of assets
     List<Product> Assets = new List<Product>();
 
+    Console.WriteLine();
     Console.ForegroundColor = ConsoleColor.DarkBlue;
-    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
-    Console.WriteLine("----------------------------------------------- Welcome to AssetTracker! -----------------------------------------------");
-    Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+    Console.WriteLine("----------------------------------------------------------------------------------------------------");
+    Console.WriteLine("------------------------------------- Welcome to AssetTracker! -------------------------------------");
+    Console.WriteLine("----------------------------------------------------------------------------------------------------");
     Console.ResetColor();
+    Console.WriteLine();
 
     while (true)
     {
@@ -92,11 +94,19 @@ void Main()
             else if (input.ToLower().Trim() == "computer" || input.ToLower().Trim() == "c" || input.ToLower().Trim() == "2")
             {
                 type = "Computer";
-            }                
+            }
+            // Error handling
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Wrong input");
+                Console.ResetColor();
+                Console.WriteLine();
+            }
         }
             
         // Check if brand is set
-        if (brand.Trim() == "")
+        if (brand.Trim() == "" && type != "")
         {
             // Add new phone
             if (type == "Phone")
@@ -135,6 +145,7 @@ void Main()
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("You need to enter a brand.");
                             Console.ResetColor();
+                            Console.WriteLine();
                             break;
                         }
                         else
@@ -187,6 +198,7 @@ void Main()
                             Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("You need to enter a brand.");
                             Console.ResetColor();
+                            Console.WriteLine();
                             break;
                         }
 
@@ -200,8 +212,8 @@ void Main()
             }
         }
 
-        // Check if model is set
-        if (model.Trim() == "")
+        // Check if model, type and brand is set
+        if (model.Trim() == "" && type != "" && brand != "")
         {
             Console.WriteLine("Enter the " + brand + "'s model:");
             Exit(); // Method to print exit instructions
@@ -220,6 +232,7 @@ void Main()
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You need to enter a model.");
                 Console.ResetColor();
+                Console.WriteLine();
             }
 
             // Set model from input
@@ -229,8 +242,8 @@ void Main()
             }
         }
 
-        // Check if office is set
-        if (office == "")
+        // Check if office, type, brand and model is set
+        if (office == "" && type != "" && brand != "" && model != "")
         {
             Console.WriteLine("Enter the number corresponding to the office the asset belongs to:");
             Console.WriteLine("1. USA");
@@ -264,12 +277,13 @@ void Main()
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Wrong input, you must enter a number between 1-3 corresponding to the correct office.");
                     Console.ResetColor();
+                    Console.WriteLine();
                     break;
             }
         }
 
-        // Check if purchase date is set
-        if (purchaseDate == DateTime.MinValue)
+        // Check if purchase date, type, model and office is set
+        if (purchaseDate == DateTime.MinValue && type != "" && model != "" && office != "")
         {            
             int year = 0;
             int month = 0;
@@ -295,6 +309,7 @@ void Main()
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Wrong input, year must be written with numbers");
                         Console.ResetColor();
+                        Console.WriteLine();
                     }
                 }
                 else
@@ -302,6 +317,7 @@ void Main()
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Wrong input, year must be written with 4 single-digit numbers");
                     Console.ResetColor();
+                    Console.WriteLine();
                 }
             }
 
@@ -326,6 +342,7 @@ void Main()
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Wrong input, month must be written with numbers");
                         Console.ResetColor();
+                        Console.WriteLine();
                     }
                 }
                 else
@@ -333,6 +350,7 @@ void Main()
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Wrong input, month must be written with two single-digit numbers");
                     Console.ResetColor();
+                    Console.WriteLine();
                 }
             }
 
@@ -356,6 +374,7 @@ void Main()
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Wrong input, day must be written with numbers");
                         Console.ResetColor();
+                        Console.WriteLine();
                     }
                 }
                 else
@@ -363,6 +382,7 @@ void Main()
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Wrong input, day must be written with two single-digit numbers");
                     Console.ResetColor();
+                    Console.WriteLine();
                 }
             }
 
@@ -377,12 +397,13 @@ void Main()
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Wrong input, the purchase date is not valid.");
                 Console.ResetColor();
+                Console.WriteLine();
             }
 
         }
 
         // Check if price in USD is set
-        if (USD == 0)
+        if (USD == 0 && type != "" && brand != "" && model != "" && office != "")
         {
             Console.WriteLine("Enter the assets purchase price in USD:");
             Exit(); // Method to print exit instructions
@@ -401,11 +422,12 @@ void Main()
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Wrong input, price must be written with numbers");
                 Console.ResetColor();
+                Console.WriteLine();
             }
         }
 
         // Check if local price today is set
-        if (localPriceToday == 0)
+        if (localPriceToday == 0 && USD != 0)
         {
             // Set local price from currency
             if (currency == "USD")
