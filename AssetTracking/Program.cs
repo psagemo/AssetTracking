@@ -235,7 +235,7 @@ void Main()
             Console.WriteLine("Enter the number corresponding to the office the asset belongs to:");
             Console.WriteLine("1. USA");
             Console.WriteLine("2. Spain");
-            Console.WriteLine("3. Swedem");
+            Console.WriteLine("3. Sweden");
             Exit(); // Method to print exit instructions
             string input = Console.ReadLine();
 
@@ -435,7 +435,7 @@ void Main()
 
     // Print list
     Console.ForegroundColor = ConsoleColor.DarkGray;
-    Console.WriteLine("Type".PadRight(30), "Brand".PadRight(30), "Model".PadRight(30), "Office".PadRight(30), "Purchase Date".PadRight(30), "Price in USD".PadRight(30), "Currency".PadRight(30), "Local price today");
+    Console.WriteLine("Type".PadRight(20) + "Brand".PadRight(20) + "Model".PadRight(20) + "Office".PadRight(20) + "Purchase Date".PadRight(20) + "Price in USD".PadRight(20) + "Currency".PadRight(20) + "Local price today");
     Console.ResetColor();
     foreach (Product asset in SortedAssets)
     {

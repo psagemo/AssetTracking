@@ -33,21 +33,20 @@ namespace AssetTracking
         
         public void PrintProduct()
         {
-            if (PurchaseDate.AddMonths(3) < DateTime.Now.AddYears(3))
+            if (PurchaseDate.AddMonths(-3) < DateTime.Now.AddYears(-3))
             {
-                Console.ForegroundColor = ConsoleColor.Red; 
-                Console.WriteLine(Type.PadRight(30), Brand.PadRight(30), Model.PadRight(30), Office.PadRight(30), PurchaseDate.ToString().PadRight(30), USD.ToString().PadRight(30), Currency.PadRight(30), LocalPriceToday);
-                Console.ResetColor();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(Type.PadRight(20) + Brand.PadRight(20) + Model.PadRight(20) + Office.PadRight(20) + PurchaseDate.ToString("MM/dd/yyyy").PadRight(20) + USD.ToString().PadRight(20) + Currency.PadRight(20) + LocalPriceToday); Console.ResetColor();
             }
-            else if (PurchaseDate.AddMonths(6) < DateTime.Now.AddYears(3))
+            else if (PurchaseDate.AddMonths(-6) < DateTime.Now.AddYears(-3))
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(Type.PadRight(30), Brand.PadRight(30), Model.PadRight(30), Office.PadRight(30), PurchaseDate.ToString().PadRight(30), USD.ToString().PadRight(30), Currency.PadRight(30), LocalPriceToday);
+                Console.WriteLine(Type.PadRight(20) + Brand.PadRight(20) + Model.PadRight(20) + Office.PadRight(20) + PurchaseDate.ToString("MM/dd/yyyy").PadRight(20) + USD.ToString().PadRight(20) + Currency.PadRight(20) + LocalPriceToday);
                 Console.ResetColor();
             }
             else
             {
-                Console.WriteLine(Type.PadRight(30), Brand.PadRight(30), Model.PadRight(30), Office.PadRight(30), PurchaseDate.ToString().PadRight(30), USD.ToString().PadRight(30), Currency.PadRight(30), LocalPriceToday);
+                Console.WriteLine(Type.PadRight(20) + Brand.PadRight(20) + Model.PadRight(20) + Office.PadRight(20) + PurchaseDate.ToString("MM/dd/yyyy").PadRight(20) + USD.ToString().PadRight(20) + Currency.PadRight(20) + LocalPriceToday);
             }
         }
     }
