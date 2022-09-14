@@ -8,14 +8,14 @@ namespace AssetTracking
 {
     internal class Product
     {
-        string Type;
-        string Brand;
-        string Model;
-        string Office;
-        DateTime PurchaseDate;
-        int USD;
-        string Currency;
-        double LocalPriceToday;
+        public string Type;
+        public string Brand;
+        public string Model;
+        public string Office;
+        public DateTime PurchaseDate;
+        public int USD;
+        public string Currency;
+        public double LocalPriceToday;
 
 
         public Product(string type, string brand, string model, string office, DateTime purchaseDate, int uSD, string currency, double localPriceToday)
@@ -28,16 +28,10 @@ namespace AssetTracking
             USD = uSD;
             Currency = currency;
             LocalPriceToday = localPriceToday;
-        }
+        }      
         
         
-        void PrintHeader()
-        {
-            Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("Type".PadRight(30), "Brand".PadRight(30), "Model".PadRight(30), "Office".PadRight(30), "Purchase Date".PadRight(30), "Price in USD".PadRight(30), "Currency".PadRight(30), "Local price today");
-            Console.ResetColor();
-        }
-        void PrintProduct()
+        public void PrintProduct()
         {
             if (PurchaseDate.AddMonths(3) < DateTime.Now.AddYears(3))
             {
