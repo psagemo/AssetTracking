@@ -37,6 +37,7 @@
  */
 
 using AssetTracking;
+using System;
 
 List<Product> Assets = new List<Product>();
 
@@ -66,7 +67,8 @@ void Main(List<Product> Assets)
         }
         else
         {
-            if (type == "")
+            // Check if type is set
+            if (type.Trim() == "")
             {
                 Console.WriteLine("Select what type of asset you would like to add:");
                 Console.WriteLine("1. Phone");
@@ -86,10 +88,12 @@ void Main(List<Product> Assets)
                 {
                     type = "Computer";
                 }                
-            }            
-            else if (type == "Phone")
+            }
+            
+            // Check if brand is set
+            if (brand.Trim() == "")
             {
-                if (brand == "")
+                if (type == "Phone")
                 {
                     Console.WriteLine("Enter the number corresponding to the brand of the phone you would like to add.");
                     Console.WriteLine("Or press enter to write the name manually");
@@ -129,11 +133,7 @@ void Main(List<Product> Assets)
                             }
                     }
                 }
-                              
-            }
-            else if (type == "Computer")
-            {
-                if (brand == "")
+                else if (type == "Computer")
                 {
                     Console.WriteLine("Enter the number corresponding to the brand of the computer you would like to add. Or press enter to write the name manually");
                     input = Console.ReadLine();
@@ -171,8 +171,10 @@ void Main(List<Product> Assets)
                                 break;
                             }
                     }
-                }                
+                }
             }
+
+            // Check if model is set
             if (model.Trim() == "")
             {
                 Console.WriteLine("Enter the " + brand + "'s model:");
@@ -192,8 +194,143 @@ void Main(List<Product> Assets)
                     model = input;
                 }
             }
-        }            
-        
+
+            // Check if office is set
+            if (office == "")
+            {
+                Console.WriteLine("Enter the number corresponding to the office the asset belongs to:");
+                input = Console.ReadLine();
+
+                switch (input.ToLower().Trim())
+                {
+                    case "e":
+                    case "exit":
+                        break;
+                    case "1":
+                        office = "USA";
+                        currency = "USD";
+                        break;
+                    case "2":
+                        office = "Spain";
+                        currency = "EUR";
+                        break;
+                    case "3":
+                        office = "Sweden";
+                        currency = "SEK";
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Wrong input, you must enter a number between 1-3 corresponding to the correct office.");
+                        Console.ResetColor();
+                        break;
+                }
+            }
+
+            // Check if purchase date is set
+            if (purchaseDate == null)
+            {
+                int year = 0;
+                int month = 0;  
+                int day = 0;
+
+                while (year == 0)
+                {
+                    Console.WriteLine("Enter the year the asset was purchased:"); ;
+                    string inputYear = Console.ReadLine();
+                    if (inputYear.ToLower().Trim() == "exit" || input.ToLower().Trim() == "e")
+                    {
+                        break;
+                    }
+                    else if (inputYear.Trim().Length == 4)
+                    {
+                        if (int.TryParse(inputYear, out year)) { }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Wrong input, year must be written with numbers");
+                            Console.ResetColor();
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Wrong input, year must be written with 4 single-digit numbers");
+                        Console.ResetColor();
+                    }
+                }
+
+                while (month == 0)
+                {
+                    Console.WriteLine("Enter the month the asset was purchased:"); ;
+                    input = Console.ReadLine();
+                    if (input.ToLower().Trim() == "exit" || input.ToLower().Trim() == "e")
+                    {
+                        break;
+                    }
+                    else if (input.Trim().Length == 2)
+                    {
+                        if (int.TryParse(input.Trim(), out month)) { }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Wrong input, month must be written with numbers");
+                            Console.ResetColor();
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Wrong input, month must be written with two single-digit numbers");
+                        Console.ResetColor();
+                    }
+                }
+
+                while (day == 0)
+                {
+                    Console.WriteLine("Enter the day the asset was purchased:"); ;
+                    input = Console.ReadLine();
+                    if (input.ToLower().Trim() == "exit")
+                    {
+                        break;
+                    }
+                    else if (input.Trim().Length == 2)
+                    {
+                        if (int.TryParse(input.Trim(), out day)) { }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("Wrong input, day must be written with numbers");
+                            Console.ResetColor();
+                        }
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Wrong input, day must be written with two single-digit numbers");
+                        Console.ResetColor();
+                    }
+                }
+                try
+                {
+                    string purchaseD = year.ToString() + "-" + month.ToString() + "-" + day.ToString();
+                    purchaseDate = Convert.ToDateTime(purchaseD);
+                }
+                catch
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Wrong input, the purchase date is not valid.");
+                    Console.ResetColor();
+                }
+                
+            }
+
+            // Check if price in USD is set
+            if (USD == 0)
+            {
+
+            }
+        }
+
 
         // Set local price from currency
         if (currency == "USD")
