@@ -114,15 +114,22 @@ void Main(List<Product> Assets)
                             break;
                         default:
                             Console.WriteLine("Please enter the name of the brand:");
-                            brand = Console.ReadLine();
-                            break;
+                            input = Console.ReadLine();
+                            if (input.Trim() == "")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("You need to enter a brand.");
+                                Console.ResetColor();
+                                break;
+                            }
+                            else
+                            {
+                                brand = input;
+                                break;
+                            }
                     }
                 }
-                if (model == "")
-                {
-                    Console.WriteLine();
-                }
-                
+                              
             }
             else if (type == "Computer")
             {
@@ -150,13 +157,39 @@ void Main(List<Product> Assets)
                             break;
                         default:
                             Console.WriteLine("Please enter the name of the brand:");
-                            brand = Console.ReadLine();
-                            break;
+                            input = Console.ReadLine();
+                            if (input.Trim() == "")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("You need to enter a brand.");
+                                Console.ResetColor();
+                                break;
+                            }
+                            else
+                            {
+                                brand = input;
+                                break;
+                            }
                     }
-                }
-                if (model == "")
+                }                
+            }
+            if (model.Trim() == "")
+            {
+                Console.WriteLine("Enter the " + brand + "'s model:");
+                input = Console.ReadLine();
+                if (input.ToLower().Trim() == "exit" || input.ToLower().Trim() == "e")
                 {
-
+                    break;
+                }
+                else if (input.Trim() == "")
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("You need to enter a model.");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    model = input;
                 }
             }
         }            
